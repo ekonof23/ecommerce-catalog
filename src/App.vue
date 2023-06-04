@@ -1,19 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="category === 'Men'">
+      <MenSection />
+    </div>
+    <div v-else-if="category === 'Women'">
+      <WomenSection />
+    </div>
+    <div v-else>
+      <UnavailableProduct />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MenSection from './components/MenSection.vue'
+import WomenSection from './components/WomenSection.vue'
+import UnavailableProduct from './components/UnavailableProduct.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MenSection,
+    WomenSection,
+    UnavailableProduct
+  },
+  data() {
+    return {
+      category: 'Women' // Ganti dengan kategori aktif yang sesuai
+    };
   }
-}
+};
 </script>
 
 <style>
